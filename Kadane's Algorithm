@@ -1,0 +1,38 @@
+public static void KadanesAlgorithm(int num[]){
+      //Time complexity: O(n) -only single loop. Hence best approach to solve Maximum Sum of Subarray
+
+      //To check whether all elements are negative.Example: {-2,-3,-1,-2,-3}
+      boolean flag=true;
+      for (int i=0;i<num.length;i++){
+         if(num[i]>=0){
+            flag=false;
+            break;
+         }
+      }
+      if (flag){
+         int mini=Integer.MAX_VALUE;
+         for(int i=0;i<num.length;i++){
+            if(mini>num[i]){
+               mini=num[i];
+            }
+         }
+         System.out.println("minimum most element is: "+mini);
+      }
+      else{
+         //If array contains both positive and negative values .Example: {-2,-3,4,-1,-2,1,5,-3}
+      int maxsum=Integer.MIN_VALUE;
+      int currsum=0;
+
+      for(int i=0;i<num.length;i++){
+         currsum=currsum+num[i];
+         if(currsum<0){
+            currsum=0;
+         }
+         // if(currsum>maxsum){
+         //    maxsum=currsum;
+         // }
+         maxsum=Math.max(currsum,maxsum);
+      }
+      System.out.println("Maximum subarray sum is: "+maxsum);
+   }
+   }
